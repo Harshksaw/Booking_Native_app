@@ -9,6 +9,9 @@ export default function App() {
   function BottomTabs(){
     return(
     <Tab.Navigator>
+      <Tab.Screen screen="Home"/>
+
+    </Tab.Navigator>
     )
   }
   return (
