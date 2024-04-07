@@ -3,18 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
 
-  const Stack = createNativeStackNavigator();
-  const Tab = createBottomTabNavigator();
-
-  function BottomTabs(){
-    return(
-    <Tab.Navigator>
-      <Tab.Screen screen="Home"/>
-
-    </Tab.Navigator>
-    )
-  }
-  return (
+ 
     <View style={styles.container}>
       
     </View>
