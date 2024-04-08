@@ -21,6 +21,7 @@ import { ModalButton } from "react-native-modals";
 import { ModalTitle } from "react-native-modals";
 import { SlideAnimation } from "react-native-modals";
 import { ModalContent } from "react-native-modals";
+import { Toast, ToastDescription, ToastTitle } from "../components/ui/toast";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -69,7 +70,7 @@ const HomeScreen = () => {
       />
     );
   };
-  console.log(route.params);
+
 
   const searchPlaces = (place) => {
     if(!route.params || !selectedDates){
@@ -98,6 +99,9 @@ const HomeScreen = () => {
       })
     }
   };
+
+
+  
 
   return (
     <>
@@ -206,7 +210,16 @@ const HomeScreen = () => {
 
             {/* Search Button */}
             <Pressable
-              onPress={() => searchPlaces(route?.params.input)}
+              onPress={() => {
+                route.params ? (
+                searchPlaces(route?.params.input || "")
+                ):(
+                  Alert.alert("please select a destination")
+                  
+                )
+              }}
+           
+              
               style={{
                 paddingHorizontal: 10,
                 borderColor: "#FFC72C",
@@ -226,6 +239,7 @@ const HomeScreen = () => {
                 Search
               </Text>
             </Pressable>
+        
           </View>
 
           <Text
