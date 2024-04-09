@@ -1,8 +1,10 @@
 import { Image, Pressable, StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
-
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const SearchResults = ({ data, input, setInput }) => {
+
+  const navigation = useNavigation();
   return (
     <View style={{ padding: 10 }}>
       <FlatList

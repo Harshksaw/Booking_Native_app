@@ -482,6 +482,8 @@ const PlacesScreen = () => {
   const [modalVisibile, setModalVisibile] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState([]);
 
+
+  
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -569,8 +571,7 @@ const PlacesScreen = () => {
         <Text>Fetching places....</Text>
       ) : (
         <ScrollView style={{ backgroundColor: "#F5F5F5" }}>
-          {/* {sortedData
-          ?.filter((item) => item.place === route.params.place)
+          {Data?.filter((item) => item.place === route.params.place)
           .map((item) =>
             item.properties.map((property, index) => (
               <PropertyCard
@@ -583,7 +584,7 @@ const PlacesScreen = () => {
                 availableRooms={property.rooms}
               />
             ))
-          )} */}
+          )}
         </ScrollView>
       )}
 
