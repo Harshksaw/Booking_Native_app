@@ -10,7 +10,9 @@ import SavedScreen from "./screens/SavedScreen";
 import BookingScreen from "./screens/BookingScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { NavigationContainer } from "@react-navigation/native";
-// import SearchScreen from "./screens/SearchScreen";
+import SearchScreen from "./screens/SearchScreen";
+import PlacesScreen from "./screens/PlacesScreen";
+
 // import PlacesScreen from "./screens/PlacesScreen";
 // import MapScreen from "./screens/MapScreen";
 // import PropertyInfoScreen from "./screens/PropertyInfoScreen";
@@ -98,6 +100,8 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={BottomTabs}  options={{headerShown:false}}/>
+        <Stack.Screen name="Search" component={SearchScreen} options={{headerShown:false}}/>
+        <Stack.Screen name="Places" component={PlacesScreen} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
