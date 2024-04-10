@@ -38,7 +38,7 @@ const PropertyCard = ({
             selectedDates: selectedDates,
           })
         }
-        style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}
+        style={{ margin: 15, flexDirection: "row", backgroundColor: "#f1e7e7" , borderRadius: 30}}
       >
         <View>
           <Image

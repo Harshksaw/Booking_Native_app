@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Octicons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-
+import PropertyCard from "../components/PropertyCard";
 import { BottomModal } from "react-native-modals";
 import { ModalFooter } from "react-native-modals";
 import { SlideAnimation } from "react-native-modals";
@@ -12,7 +12,8 @@ import { ModalTitle } from "react-native-modals";
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { ModalContent } from "react-native-modals";
-
+// import { collection, getDocs } from "firebase/firestore";
+// import { db } from "../firebase";
 
 const PlacesScreen = () => {
   const route = useRoute();
@@ -481,9 +482,6 @@ const PlacesScreen = () => {
   const navigation = useNavigation();
   const [modalVisibile, setModalVisibile] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState([]);
-
-
-  
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -514,14 +512,48 @@ const PlacesScreen = () => {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
 
+
   const searchPlaces = data?.filter(
     (item) => item.place === route.params.place
   );
   const [sortedData, setSortedData] = useState(items);
   console.log(searchPlaces);
 
+  const compare = (a, b) => {
+    if (a.newPrice > b.newPrice) {
+      return -1;
+    }
+    if (a.newPrice < b.newPrice) {
+      return 1;
+    }
+    return 0;
+  };
 
+  const comparision = (a, b) => {
+    if (a.newPrice < b.newPrice) {
+      return -1;
+    }
+    if (a.newPrice > b.newPrice) {
+      return 1;
+    }
+    return 0;
+  };
 
+  const applyFilter = (filter) => {
+    setModalVisibile(false);
+    switch (filter) {
+      case "cost:High to Low":
+        searchPlaces.map((val) => val.properties.sort(compare));
+        setSortedData(searchPlaces);
+        break;
+      case "cost:Low to High":
+        searchPlaces.map((val) => val.properties.sort(comparision));
+        setSortedData(searchPlaces);
+        break;
+    }
+  };
+
+  console.log(route.params);
 
   return (
     <View>
@@ -571,20 +603,21 @@ const PlacesScreen = () => {
         <Text>Fetching places....</Text>
       ) : (
         <ScrollView style={{ backgroundColor: "#F5F5F5" }}>
-          {Data?.filter((item) => item.place === route.params.place)
-          .map((item) =>
-            item.properties.map((property, index) => (
-              <PropertyCard
-                key={index}
-                rooms={route.params.rooms}
-                children={route.params.children}
-                adults={route.params.adults}
-                selectedDates={route.params.selectedDates}
-                property={property}
-                availableRooms={property.rooms}
-              />
-            ))
-          )}
+          {sortedData
+            ?.filter((item) => item.place === route.params.place)
+            .map((item) =>
+              item.properties.map((property, index) => (
+                <PropertyCard
+                  key={index}
+                  rooms={route.params.rooms}
+                  children={route.params.children}
+                  adults={route.params.adults}
+                  selectedDates={route.params.selectedDates}
+                  property={property}
+                  availableRooms={property.rooms}
+                />
+              ))
+            )}
         </ScrollView>
       )}
 
