@@ -566,6 +566,20 @@ const PlacesScreen = () => {
           padding: 12,
           backgroundColor: "white",
         }}
+        onPress={()=>navigation.navigate("Info", {
+
+          name: property.name,
+          rating: property.rating,
+          oldPrice: property.oldPrice,
+          newPrice: property.newPrice,
+          photos : property.photos,
+          rooms : property.rooms,
+          adults,
+          children,
+          rooms,
+          selectedDates,
+
+        })}
       >
         <Pressable
           onPress={() => setModalVisibile(!modalVisibile)}
