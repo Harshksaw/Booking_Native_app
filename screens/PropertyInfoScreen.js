@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { pixelNormalize } from "../components/Normalise";
+import { pixelNormalize } from "../components/Normalize";
 import { MaterialIcons } from "@expo/vector-icons";
 import Amenities from "../components/Amenities";
 

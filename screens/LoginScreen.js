@@ -38,6 +38,30 @@ const LoginScreen = () => {
   //     getMyObject();
   //   }, [token]);
 
+  useEffect(() => {
+      try {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+
+    
+      if (authUser) {
+        navigation.replace("Main");
+      }
+      if(!authUser){
+        console.log("no user")
+
+      }
+    });
+           return unsubscribe;
+        
+      } catch (error) {
+        console.log("error",error)
+        
+      }
+  
+   
+
+  },[])
+
   const login = () => {
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       console.log("user credential", userCredential);

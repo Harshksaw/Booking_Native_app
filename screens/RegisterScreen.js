@@ -37,6 +37,18 @@ const RegisterScreen = () => {
         { cancelable: false }
       );
     }
+    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      const user = userCredential._tokenResponse.email;
+      const uid = auth.currentUser.uid;
+
+      setDoc(doc(db, "users", `${uid}`), {
+        email: user,
+        phone: phone,
+      }).then(() => {
+        AsyncStorage.setItem("user", JSON.stringify({ email: user, phone: phone }));
+        navigation.navigate("Home");
+      })
+    })
   
   };
   return (

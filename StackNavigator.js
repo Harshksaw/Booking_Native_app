@@ -14,7 +14,7 @@ import SearchScreen from "./screens/SearchScreen";
 import PlacesScreen from "./screens/PlacesScreen";
 import MapScreen from "./screens/MapScreen";
 import PropertyInfoScreen from "./screens/PropertyInfoScreen";
-import RoomsScreen from "./screens/RoomScreen";
+import RoomsScreen from "./screens/RoomsScreen";
 import UserScreen from "./screens/UserScreen";
 import ConfirmationScreen from "./screens/ConfirmationScreen";
 import LoginScreen from "./screens/LoginScreen";
